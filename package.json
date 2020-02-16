@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cp .env.production .env && nodemon ./bin/www",
+    "start": "cp .env.production .env && node ./bin/www",
     "start:local": "cp .env.local .env && nodemon ./bin/www",
     "start:development": "cp .env.development .env && nodemon ./bin/www"
   },
