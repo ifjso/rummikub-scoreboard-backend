@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const historesRouter = require('./api/histories');
 const scoresRouter = require('./api/scores');
 const usersRouter = require('./api/users');
@@ -21,11 +22,12 @@ mongoose.connection.once('open', () =>
 
 const app = express();
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const API_CONTEXT = process.env.API_CONTEXT;
+const { API_CONTEXT } = process.env;
 app.use(`${API_CONTEXT}/histories`, historesRouter);
 app.use(`${API_CONTEXT}/scores`, scoresRouter);
 app.use(`${API_CONTEXT}/users`, usersRouter);
