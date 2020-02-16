@@ -14,7 +14,8 @@ mongoose.connect(process.env.DB_HOST, {
   pass: process.env.DB_PASS,
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 mongoose.connection.once('open', () =>
   console.info(`connected to database: ${process.env.DB_HOST}`)
