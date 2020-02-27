@@ -1,9 +1,15 @@
 const History = require('../../models/history');
+const User = require('../../models/user');
 
 const write = async (req, res, next) => {
   try {
     const { owner, value } = req.body;
-    const history = await History.create({ owner, value });
+    const user = await User.findOne({ owner });
+    if (!user) {
+      throw new Error(`${owner} not found.`);
+    }
+
+    const history = await History.create({ owner, name: user.name, value });
     res.json(history);
   } catch (e) {
     next(e);

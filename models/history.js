@@ -2,6 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const HistorySchema = new Schema({
   owner: Number,
+  name: String,
   value: Number,
   createdAt: { type: Number, default: Date.now }
 });
