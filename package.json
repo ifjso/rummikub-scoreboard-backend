@@ -1,6 +1,9 @@
 {
   "name": "rummikub-scoreboard-server",
-  "version": "0.0.0",
+  "version": "0.1.1",
+  "engines": {
+    "node": ">=13.0.0"
+  },
   "private": true,
   "scripts": {
     "start": "cp .env.production .env && node ./bin/www",
