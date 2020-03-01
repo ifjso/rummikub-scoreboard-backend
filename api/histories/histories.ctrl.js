@@ -1,5 +1,4 @@
 const History = require('../../models/history');
-const User = require('../../models/user');
 
 const list = async (req, res, next) => {
   try {
@@ -22,4 +21,4 @@ const list = async (req, res, next) => {
   }
 };
 
-module.exports = { write, list };
+module.exports = { list };
