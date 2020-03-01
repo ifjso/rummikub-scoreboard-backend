@@ -17,7 +17,7 @@ const read = async (req, res, next) => {
       throw new createError.NotFound(`${owner}'s score not found.`);
     }
 
-    res.json(Object.assign(score, { user }));
+    res.json({ ...score.toObject(), user });
   } catch (e) {
     next(e);
   }
@@ -50,7 +50,7 @@ const update = async (req, res, next) => {
       value: score - prevScore.score
     });
 
-    res.json(Object.assign(prevScore, { score }));
+    res.json({ ...prevScore.toObject(), score });
   } catch (e) {
     next(e);
   }
