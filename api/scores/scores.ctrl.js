@@ -17,7 +17,7 @@ const read = async (req, res, next) => {
       throw new createError.NotFound(`${owner}'s score not found.`);
     }
 
-    res.json({ ...score, user });
+    res.json(Object.assign(score, { user }));
   } catch (e) {
     next(e);
   }
