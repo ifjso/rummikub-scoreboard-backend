@@ -7,7 +7,7 @@ const read = async (req, res, next) => {
   try {
     const { owner } = req.params;
 
-    const user = await user.findOne({ owner });
+    const user = await User.findOne({ owner });
     if (!user) {
       throw new Error(`${owner} not found.`);
     }
