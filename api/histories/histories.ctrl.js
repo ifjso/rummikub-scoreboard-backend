@@ -4,7 +4,7 @@ const list = async (req, res, next) => {
   try {
     const { from, to, skip, limit } = req.query;
 
-    const query = { createdAt: {} };
+    const query = { createdAt: { $gte: 0 } };
     if (from) {
       Object.assign(query.createdAt, { $gte: Number(from) });
     }
