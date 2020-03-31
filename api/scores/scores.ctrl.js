@@ -26,7 +26,7 @@ const read = async (req, res, next) => {
 const update = async (req, res, next) => {
   try {
     const { owner } = req.params;
-    const { score } = req.body;
+    const { score, emojiType, memo } = req.body;
 
     const user = await User.findOne({ owner });
     if (!user) {
@@ -47,7 +47,9 @@ const update = async (req, res, next) => {
     await History.create({
       owner,
       name: user.name,
-      value: score - prevScore.score
+      value: score - prevScore.score,
+      emojiType,
+      memo
     });
 
     res.json({ ...prevScore.toObject(), score });
