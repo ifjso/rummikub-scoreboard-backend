@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const historesRouter = require('./api/histories');
-const scoresRouter = require('./api/scores');
 const usersRouter = require('./api/users');
 
 dotenv.config();
@@ -30,7 +29,6 @@ app.use(express.urlencoded({ extended: false }));
 
 const { API_CONTEXT } = process.env;
 app.use(`${API_CONTEXT}/histories`, historesRouter);
-app.use(`${API_CONTEXT}/scores`, scoresRouter);
 app.use(`${API_CONTEXT}/users`, usersRouter);
 
 app.use((err, req, res, next) => {
