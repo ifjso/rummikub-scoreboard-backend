@@ -4,6 +4,7 @@ const UserSchema = new Schema({
   owner: Number,
   name: String,
   picture: String,
+  score: Number,
   createdAt: { type: Number, default: Date.now },
   updatedAt: { type: Number, default: Date.now }
 });
