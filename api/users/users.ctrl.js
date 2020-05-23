@@ -30,7 +30,6 @@ const update = async (req, res, next) => {
 
     await History.create({
       owner,
-      name: user.name,
       value: score - user.score,
       emojiType,
       memo
