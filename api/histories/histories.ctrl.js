@@ -1,4 +1,5 @@
 const History = require('../../models/history');
+const User = require('../../models/user');
 
 const list = async (req, res, next) => {
   try {
@@ -11,6 +12,12 @@ const list = async (req, res, next) => {
       .skip((page - 1) * perPage)
       .limit(perPage)
       .sort({ createdAt: -1 });
+    const users = await User.find();
+    histories.forEach(history => {
+      const user = users.find(user => user.owner === history.owner);
+      Object.assign(history, { name: user.name });
+    });
+
     const pageCount = Math.trunc((historyCount - 1) / perPage) + 1;
     res.json({ histories, hasNextPage: pageCount > page });
   } catch (e) {
